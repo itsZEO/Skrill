@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Payment - ₹999</title>
+  <link rel="stylesheet" href="payment.css" />
+</head>
+<body>
+  <main class="payment-container">
+    <section class="payment-box">
+      <h1 class="payment-title">Complete Your Payment</h1>
+      <p class="payment-amount">Total Amount: <span>₹999</span></p>
+
+      <div class="method-tabs">
+        <button onclick="showForm('upi')" class="tab-button">UPI</button>
+        <button onclick="showForm('paytm')" class="tab-button">Paytm</button>
+        <button onclick="showForm('card')" class="tab-button">Credit/Debit Card</button>
+      </div>
+
+      <form id="upi" class="payment-form">
+        <label for="upi-id">Enter UPI ID</label>
+        <input type="text" id="upi-id" name="upi-id" placeholder="e.g., user@upi" required>
+        <button type="submit" class="pay-button">Pay ₹999 via UPI</button>
+      </form>
+
+      <form id="paytm" class="payment-form">
+        <label for="paytm-number">Paytm Number</label>
+        <input type="text" id="paytm-number" name="paytm-number" placeholder="e.g., 9876543210" required>
+        <button type="submit" class="pay-button">Pay ₹999 via Paytm</button>
+      </form>
+
+      <form id="card" class="payment-form">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+
+        <div class="card-row">
+          <div>
+            <label for="expiry">Expiry</label>
+            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+          </div>
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" name="cvv" placeholder="123" required>
+          </div>
+        </div>
+
+        <button type="submit" class="pay-button">Pay ₹999 via Card</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function showForm(method) {
+      const forms = document.querySelectorAll('.payment-form');
+      forms.forEach(form => form.classList.remove('active'));
+      document.getElementById(method).classList.add('active');
+    }
+
+    // Show UPI by default
+    document.addEventListener("DOMContentLoaded", () => {
+      showForm('upi');
+    });
+  </script>
+</body>
+</html>
